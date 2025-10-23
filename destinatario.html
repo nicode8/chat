@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=DM+Serif+Text:ital@0;1&display=swap');
+body{
+    background-color: rgba(73, 72, 172, 0.329);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "DM Serif Text",sans-serif;
+}
+
+#container{
+    background-color: rgb(14, 12, 12);
+    width:30%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:3%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px;
+    
+    
+}
+#dest{
+    height:12%;
+    width: 50%;
+    font-size:130%;
+    padding-left:4%;
+    padding-right:4%;
+    font-family: "DM Serif Text",sans-serif;
+    
+   
+}
+
+#btn{
+    margin-top:10%;
+    height:15%;
+    padding-left:4%;
+    padding-right:4%;
+    font-size:220%;
+    font-family: "BBH Sans Hegarty",sans-serif;
+    background-color: white;
+    border-radius: 15px;
+}
+h1{
+    color: white;
+    font-size:400%;
+}
+
+
+
+
+</style>
+<body>
+
+    <div id="container">
+            <h1>Destinatario</h1>
+            <input type="text" name="dest" id="dest" placeholder="Inserisci E-mail" size=10>
+ 
+        <input type="button" name="btn" id="btn" value="Chatta" onClick="destinatario();">
+        
+    
+    </div>
+
+<script type="text/javascript">
+
+    function destinatario()
+    {
+        var utente_destinatario=document.getElementById("dest").value;
+        if(utente_destinatario.length)
+        {
+                fetch("destinatario.php",
+                {method:"post", 
+                headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
+                body:"dest=" + utente_destinatario
+
+           });
+           window.location.href="homepage.html";
+        }
+        else
+            alert("inserisci e-mail valida");
+        
+        
+
+
+    }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

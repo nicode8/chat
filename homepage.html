@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+    background-color: rgba(73, 72, 172, 0.329);
+    
+}
+#container{
+    height: 100vh;
+    width: 100%;
+    padding-bottom: 2%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 20%;
+    overflow-y: none;
+   
+    
+}
+#container-message{
+    height: 70%;
+    overflow-y: auto;
+}
+#casella-input{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-left:20%;
+    padding-right:20%;
+    height: 50%;
+    position: sticky;
+    
+   
+
+}
+#miotesto{
+    background-color: rgb(14, 12, 12);
+    border: 2px solid white;
+    width:200%;
+    height: 20%;
+    border-radius: 15px;
+    color: white;
+    font-size: 120%;
+    padding-left: 2%;
+    
+
+
+}
+#send_img{
+    width: 10%;
+}
+
+#miotesto + #send_img{
+    margin-left:5%;
+}
+
+#message{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left:20%;
+    padding-right:20%;
+   
+    
+}
+.send_message{
+    
+  
+    width:20%;
+    background-color: aliceblue;
+    height: fit-content;
+    padding:2%;
+    font-size:120%;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px;
+    margin-bottom:2%;
+
+    
+}
+#container_send{
+        display: none;
+         
+}
+</style>
+<body>
+    <div id="container">
+        <div id="container-message">
+        <div id="message">
+            <div id="container_send" ></div>
+            <div class="receive_message"></div>
+        </div>
+        </div>
+        <div id="casella-input">
+            <input type="text" name="miotesto" id="miotesto" value="" placeholder="Scrivi qui" size=10 autofocus>
+            <img id="send_img" src="send.png">
+        </div>
+   
+
+
+    </div>
+
+    
+<script type="text/javascript">
+
+    send_img.addEventListener('click',invia);
+
+    function invia()
+    {   
+        var testo=document.getElementById("miotesto");
+        var rett=document.getElementById("container_send");
+        var message=document.getElementById("container-message");
+        if(rett.style.display=="none")
+            rett.style.display = "block";
+
+        var div=document.createElement("div");
+    
+        div.classList.add("send_message");
+        if(testo.value== "")
+            alert("inserisci un messaggio per inviare");
+        else
+            {   div.textContent= testo.value;
+                document.getElementById("message").appendChild(div);
+                 message.scrollTop = message.scrollHeight;
+            }
+
+
+            fetch("https://ilmiosito.epizy.com/chat.php", {method:"post", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: "messaggio=" + testo.value  });
+            setTimeout(() => {
+           
+            }, 0);
+            testo.value= "";
+            testo.focus();
+
+    }
+
+    function ricevi()
+    {   var msg;
+        fetch("https://ilmiosito.epizy.com/ricevi.php")
+            .then(response=>response.json())
+            .then(data=>{
+                data.forEach(msg=>{
+                var div2=document.createElement("div");
+                div2.classList.add("receive_message");
+                div2.textContent= msg.messaggio;
+                document.getElementById("message").appendChild(div2);
+            })
+            });
+
+    }
+
+    setInterval(ricevi,2000);
+
+
+    
+
+    
+
+
+
+
+
+</script>
+</body>
+</html>

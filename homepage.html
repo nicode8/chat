@@ -130,7 +130,7 @@ body{
             }
 
 
-            fetch("https://ilmiosito.epizy.com/chat.php", {method:"post", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: "messaggio=" + testo.value  });
+            fetch("https://ilmiosito.wasmer.io/chat.php", {method:"post", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: "messaggio=" + testo.value  });
             setTimeout(() => {
            
             }, 0);
@@ -141,7 +141,7 @@ body{
 
     function ricevi()
     {   var msg;
-        fetch("https://ilmiosito.epizy.com/ricevi.php")
+        fetch("https://ilmiosito.wasmer.io/ricevi.php")
             .then(response=>response.json())
             .then(data=>{
                 data.forEach(msg=>{

@@ -77,7 +77,7 @@ h1{
         var utente_destinatario=document.getElementById("dest").value;
         if(utente_destinatario.length)
         {
-                fetch("destinatario.php",
+                fetch("https://ilmiosito.wasmer.io/destinatario.php",
                 {method:"post", 
                 headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
                 body:"dest=" + utente_destinatario

@@ -64,7 +64,7 @@ body{
 #container-message-sent{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    
     padding-left:20%;
     padding-right:20%;
    
@@ -72,14 +72,14 @@ body{
 }
 #d_none1{
     display: none;
+    
 }
 #d_none2{
     display: none;
 }
 
 .send_message{
-    align-items: flex-end;
-    display: none;
+    margin-left:auto;
     width:20%;
     background-color: aliceblue;
     height: fit-content;
@@ -88,7 +88,7 @@ body{
     border-radius: 15px;
     box-shadow: 2px 2px 2px;
     margin-bottom:2%;
-    margin-left: auto;
+    
 
     
 }
@@ -96,14 +96,14 @@ body{
 #container-message{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     padding-left:20%;
     padding-right:20%;
    
     
 }
 .receive_message{
-    align-items: flex-start;
-    display: none;
+    
     width:20%;
     background-color: aliceblue;
     height: fit-content;
@@ -118,15 +118,9 @@ body{
     <div id="container">
         <div id="container-message">
 
-            
                 <div id="d_none1"></div>
-           
-        
-            
-                <div id="d_none2">ciao</div>
-           
-            
-        
+                <div id="d_none2"></div>
+
         </div>
         <div id="casella-input">
             <input type="text" name="miotesto" id="miotesto" value="" placeholder="Scrivi qui" size=10 autofocus>
@@ -140,8 +134,9 @@ body{
     
 <script type="text/javascript">
 
+    
     send_img.addEventListener('click',invia);
-
+    var last_message=[];
     function invia()
     {   
         var testo=document.getElementById("miotesto");
@@ -171,7 +166,7 @@ body{
 
     }
 
-    var last_message=[];
+   
     function ricevi()
     {   var msg;
         fetch("https://chattin.io/ricevi.php")

@@ -9,6 +9,7 @@
 body{
     background-color: rgba(73, 72, 172, 0.329);
     box-sizing: border-box;
+    overflow-y: hidden;
     
 }
 #container{
@@ -19,10 +20,13 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 20%;
+    
     overflow-y: hidden;
    
     
+}
+#logout{
+    width:5%;
 }
 #container-message{
     height: 70%;
@@ -44,7 +48,7 @@ body{
     background-color: rgb(14, 12, 12);
     border: 2px solid white;
     width:100%;
-    height: 20%;
+    height: 30%;
     border-radius: 15px;
     color: white;
     font-size: 120%;
@@ -113,9 +117,42 @@ body{
     box-shadow: 2px 2px 2px;
     margin-bottom:2%;
 }
+@media screen and (max-width: 390px)
+{
+    #casella-input{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-left:5%;
+    padding-right:5%;
+    height: 10%;
+    position: sticky;
+    width:100%;
+    
+}
+#miotesto{
+    background-color: rgb(14, 12, 12);
+    border: 2px solid white;
+    width:60%;
+    height: 100%;
+    border-radius: 15px;
+    color: white;
+    font-size: 120%;
+    padding-left: 1%;
+    
+
+
+}
+#send_img{
+    width: 30%;
+}
+
+
+}
 </style>
 <body>
     <div id="container">
+        <img id="logout" src="logout.png">
         <div id="container-message">
 
                 <div id="d_none1"></div>
@@ -134,7 +171,13 @@ body{
     
 <script type="text/javascript">
 
-    
+    logout.addEventListener('click',function()
+    {
+        window.location.href="index.html";
+    });
+
+
+
     send_img.addEventListener('click',invia);
     var last_message=[];
     function invia()

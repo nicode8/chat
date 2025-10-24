@@ -1,9 +1,9 @@
 <?php
 
-$DB_host= "db.fr-pari1.bengt.wasmernet.com";
-$DB_name= "dbdili";
-$DB_user= "a17adccc7a27800094e912c32dd5";
-$DB_pass= "068fa17a-dccc-7bc4-8000-db55c4b98c8a";
+$DB_host= "localhost";
+$DB_name= "u154795139_database_chat";
+$DB_user= "u154795139_nicode8";
+$DB_pass= "Nicode8_chat_AAA000";
 
 
 ?>

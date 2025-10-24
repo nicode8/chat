@@ -1,11 +1,10 @@
 <?php
+session_start();
 require 'config.php';
 $conn= new mysqli($DB_host,$DB_user,$DB_pass,$DB_name);
 
 if($conn->connect_error)
     die("error");
-
-
 
 $email=$_POST["email"];
 $password=$_POST["passw"];
@@ -21,7 +20,9 @@ $result= $stmt->get_result();
 
 
 if($row= $result->fetch_assoc())
+{   $_SESSION["email"]=$_POST["email"];
     header("Location: destinatario.html");
+}
 else
     echo"errore";
 

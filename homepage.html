@@ -8,6 +8,7 @@
 <style>
 body{
     background-color: rgba(73, 72, 172, 0.329);
+    box-sizing: border-box;
     
 }
 #container{
@@ -33,7 +34,7 @@ body{
     justify-content: center;
     padding-left:20%;
     padding-right:20%;
-    height: 50%;
+    height: 30%;
     position: sticky;
     
    
@@ -69,9 +70,16 @@ body{
    
     
 }
+#d_none1{
+    display: none;
+}
+#d_none2{
+    display: none;
+}
+
 .send_message{
-    
-  
+    align-items: flex-end;
+    display: none;
     width:20%;
     background-color: aliceblue;
     height: fit-content;
@@ -80,28 +88,22 @@ body{
     border-radius: 15px;
     box-shadow: 2px 2px 2px;
     margin-bottom:2%;
+    margin-left: auto;
 
     
 }
-#d_none1{
-    display: none;
-         
-}
-#d_none2{
-    display: none;
-         
-}
-#container-message-received{
+
+#container-message{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding-left:20%;
     padding-right:20%;
    
     
 }
 .receive_message{
-    
+    align-items: flex-start;
+    display: none;
     width:20%;
     background-color: aliceblue;
     height: fit-content;
@@ -116,12 +118,13 @@ body{
     <div id="container">
         <div id="container-message">
 
-            <div id="container-message-sent">
+            
                 <div id="d_none1"></div>
-            </div>
-            <div id="container-message-received">
+           
+        
+            
                 <div id="d_none2">ciao</div>
-            </div>
+           
             
         
         </div>
@@ -154,7 +157,7 @@ body{
             alert("inserisci un messaggio per inviare");
         else
             {   div.textContent= testo.value;
-                document.getElementById("container-message-sent").appendChild(div);
+                document.getElementById("container-message").appendChild(div);
                  message.scrollTop = message.scrollHeight;
             }
 
@@ -168,6 +171,7 @@ body{
 
     }
 
+    var last_message=[];
     function ricevi()
     {   var msg;
         fetch("https://chattin.io/ricevi.php")
@@ -180,12 +184,16 @@ body{
                     rett_r.style.display = "block"; 
 
                 data.forEach(msg=>{
+                if(!last_message.includes(msg))
+                {
                 var div=document.createElement("div");
                     
                 div.classList.add("receive_message");
                 div.textContent= msg;
-                document.getElementById("container-message-received").appendChild(div);
+                document.getElementById("container-message").appendChild(div);
                 message.scrollTop = message.scrollHeight;
+                last_message.push(msg);
+                }
                 
                 })
             });

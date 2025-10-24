@@ -19,7 +19,7 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     margin-bottom: 20%;
-    overflow-y: none;
+    overflow-y: hidden;
    
     
 }
@@ -42,7 +42,7 @@ body{
 #miotesto{
     background-color: rgb(14, 12, 12);
     border: 2px solid white;
-    width:200%;
+    width:100%;
     height: 20%;
     border-radius: 15px;
     color: white;
@@ -60,7 +60,7 @@ body{
     margin-left:5%;
 }
 
-#message{
+#container-message-sent{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -83,18 +83,47 @@ body{
 
     
 }
-#container_send{
-        display: none;
+#d_none1{
+    display: none;
          
+}
+#d_none2{
+    display: none;
+         
+}
+#container-message-received{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left:20%;
+    padding-right:20%;
+   
+    
+}
+.receive_message{
+    
+    width:20%;
+    background-color: aliceblue;
+    height: fit-content;
+    padding:2%;
+    font-size:120%;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px;
+    margin-bottom:2%;
 }
 </style>
 <body>
     <div id="container">
         <div id="container-message">
-        <div id="message">
-            <div id="container_send" ></div>
-            <div class="receive_message"></div>
-        </div>
+
+            <div id="container-message-sent">
+                <div id="d_none1"></div>
+            </div>
+            <div id="container-message-received">
+                <div id="d_none2">ciao</div>
+            </div>
+            
+        
         </div>
         <div id="casella-input">
             <input type="text" name="miotesto" id="miotesto" value="" placeholder="Scrivi qui" size=10 autofocus>
@@ -113,7 +142,7 @@ body{
     function invia()
     {   
         var testo=document.getElementById("miotesto");
-        var rett=document.getElementById("container_send");
+        var rett=document.getElementById("d_none1");
         var message=document.getElementById("container-message");
         if(rett.style.display=="none")
             rett.style.display = "block";
@@ -125,7 +154,7 @@ body{
             alert("inserisci un messaggio per inviare");
         else
             {   div.textContent= testo.value;
-                document.getElementById("message").appendChild(div);
+                document.getElementById("container-message-sent").appendChild(div);
                  message.scrollTop = message.scrollHeight;
             }
 
@@ -144,12 +173,21 @@ body{
         fetch("https://chattin.io/ricevi.php")
             .then(response=>response.json())
             .then(data=>{
+    
+                var rett_r=document.getElementById("d_none2");
+                var message=document.getElementById("container-message");
+                if(rett_r.style.display=="none") 
+                    rett_r.style.display = "block"; 
+
                 data.forEach(msg=>{
-                var div2=document.createElement("div");
-                div2.classList.add("receive_message");
-                div2.textContent= msg.messaggio;
-                document.getElementById("message").appendChild(div2);
-            })
+                var div=document.createElement("div");
+                    
+                div.classList.add("receive_message");
+                div.textContent= msg;
+                document.getElementById("container-message-received").appendChild(div);
+                message.scrollTop = message.scrollHeight;
+                
+                })
             });
 
     }

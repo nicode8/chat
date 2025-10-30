@@ -3,46 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accesso</title>
+    <title>Registrazioni</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 body{
-    height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #e0e0e0;
+    height:100vh;
+    display:flex;
+    justify-content: center;
     font-family: 'Inter', sans-serif;
     overflow-y: hidden;
+
 }
 
 #container{
+    background-color: #ffffff;
+    margin-top:8vh;
+    padding-top:5vh;
+    width:60vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-left:5vh;
     padding-right:5vh;
-    padding-top:5vh;
-    background-color: #ffffff;
-    width: 55vh;
-    height: 60vh;
-    padding-top: 10vh;
-
-
-}
-
-#container-body{
-    display: flex;
-    flex-direction: column;
-    padding-top:5vh;
-
+    border: none;
 }
 h1{
     color:#2563EB;
     font-size: 4vh;
 }
+
+#container-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+
+}
+
 .input{
     width: 40vh;
     height: 5vh;
@@ -52,133 +52,102 @@ h1{
     border-left:none;
     border-right:none;
     border-bottom:1px solid black;
-    padding-top: 1vh;
-    
+    margin-bottom: 4vh;
+    padding-top:1vh;
 }
-
+.input + #hideShow{
+    margin-left:1vh;
+}
 #pass_btn{
-    padding-top:2vh;
+    display: flex;
+    justify-content: center;
     position:relative;
     display: inline-block;
-
-
 }
-
 #hideShow{
     width:5vh;
-    position:absolute;
-}
-#reg{
-    width: 40vh;
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 3vh;
-}
-a{
-    text-decoration: none;
-    color: black;
-    color: #2563EB;
+    position: absolute;
 }
 #submitt{
-    margin-top:10vh;
+
+    margin-top:6vh;
+    width:20vh;
+    height: 6vh;
+
 
 }
 
 #sbmt{
-    width:20vh;
-    height: 6vh;
     font-size: 3vh;
-    background-color:#2563EB ;
+    background-color:#2563EB ; 
     color:white;
     border-radius: 15px;
     border: none;
-
+    width: 100%;
+    height: 100%;
 }
+
 @media screen and (max-width:767px)
 {
-body{
-    
-    background-color: #ffffff;
-    margin-top:0;
-    
-    
-}
-#container{
-    height:100vh;
-    padding-top:30vh;
-    padding-left: 1vh;
-    padding-top: 18vh;
-
-
-
-}
-h1{
+    body{
+        background-color: #ffffff;
+    }
+    #container{
+        
+        height:100vh;
+    }
+    h1{
     font-size:6vh;
     padding-left: 3vh;
     padding-left: 3vh;
-}
-
-.input{
-    width:38vh;
-    font-size:2vh;
-    padding-top:1vh;
-
-
-}
-#hideShow{
-    width:6vh;
-
-
-}
-.input + #hideShow{
-    margin-left: 1vh;
-}
-#reg{
-    width:38vh;
-    font-size:3vh;
-}
-#submitt{
-    margin-top:15vh;
-}
-#sbmt{
-    width:25vh;
-    height: 10vh;
-
-}
+    }
+    .input{
+        width:38vh;
+    }
+    #submitt{
+        width: 25vh;
+        height: 8vh;
+    }
+    #sbmt{
+        font-size: 4vh;
+    }
 }
 </style>
 </head>
 <body>
 
-<form action="accesso.php" method="POST">
-    <div id="container">
-        <h1>Login</h1>
-
+<form action="registrazioni.php" method="POST">
+    <fieldset id="container">
+        <h1>Sign Up</h1>
         <div id="container-body">
-    
-            <input type="text"  class="input" id="email" name="email" value="" placeholder=" Inserire e-mail" size="15">
+            
+            <input type="text"  class="input" id="nome" name="nome" value="" placeholder=" Inserisci nome" size="15">
+            
+            <input type="text"  class="input" id="cognome" name="cognome" value="" placeholder=" Inserisci cognome" size="15">
            
+            <input type="text"  class="input" id="email" name="email" value="" placeholder=" Inserire e-mail" size="15">
+            
             <div id="pass_btn">
                 <input type="password" class="input" id="passw" name="passw" value="" placeholder=" Inserire password" size="15">
                 <img src="open_eye.png" id="hideShow">
+                   
             </div>
         </div>
-        <div id="reg">
-            <a href="registrazioni.html">Sign up</a>
-        </div>
         <div id="submitt">
-        <input type="submit" id="sbmt" name="sbmt" value="LOGIN">
-        
+            <input type="submit" id="sbmt" name="sbmt" value="Registrati">
+            
+
         </div>
-    </div>
+
+    </fieldset>
 </form>
 
 
 
 
-
 <script type="text/javascript">
- hideShow.addEventListener("click",mostrapass)
+
+    hideShow.addEventListener("click",mostrapass)
 
     function mostrapass()
     {   
@@ -200,6 +169,7 @@ h1{
             }
 
     }
+
 
 
 

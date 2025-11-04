@@ -4,189 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazioni</title>
-    
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8088869830901654"
+     crossorigin="anonymous"></script>
 <style>
 body{
-    background-color: rgb(14, 12, 12);
-}
-form{
-  display: flex;
-  justify-content: center;
-  height:100vh;
-  align-items: center;
-   
+    background-color: #e0e0e0;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    overflow-y: hidden;
 
-    
-    
 }
 
 #container{
-    width:18%;
-    height:85%;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: rgb(2, 2, 2);
-    border-radius: 15px;
-    padding-bottom: 0%;
-    
-    
-}
-#container-body{
-    height:70%;
-    width:120%;
+    background-color: #ffffff;
+    margin-top:8vh;
+    padding-top:5vh;
+    width:60vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-left:5vh;
+    padding-right:5vh;
+    border: none;
+}
+h1{
+    color:#2563EB;
+    font-size: 4vh;
+}
+
+#container-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+
+}
+
+.input{
+    width: 40vh;
+    height: 5vh;
+    font-size: 2vh;
+    padding-left:1vh;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom:1px solid black;
+    margin-bottom: 4vh;
+    padding-top:1vh;
+}
+.input + #hideShow{
+    margin-left:1vh;
+}
+#pass_btn{
+    display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding-top:2%;
-}
-legend{
-    color:white;
-
-}
-#container input{
-    margin-bottom: 1rem;
-}
-.inputt{
-    height:10%;
-    width:70%;
-    border-radius: 15px;
-    border:none;
-    margin-bottom: 10%;
-    padding-left: 2%;
-   
-}
-#passw{
-    height:100%;
-    width:50%;
-    border-radius: 15px;
-    border:none;
-   
-
+    position:relative;
+    display: inline-block;
 }
 #hideShow{
-    
-    
-    width:fit-content;
-    padding-left:5%;
-    padding-right:5%;
-    font-size: 80%;
-    border:none;
-    border-radius: 5px;
-    height:85%;
-    
-}
-
-#pass_btn{
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10%;
-    padding-right: 10%;
-    box-sizing: border-box;
-  
-    
-    
+    width:5vh;
+    position: absolute;
 }
 #submitt{
-    display: flex;
-    justify-content: space-around;
-    height: 20%;
-    width: 120%;
-    align-items: center;
-    margin-top: 10%;
+
+    margin-top:6vh;
+    width:20vh;
+    height: 6vh;
+
+
 }
 
 #sbmt{
-
-    height: 40%;
-    width: fit-content;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    background-color: white;
-    font-size: 150%;
-    font-size: 180%;
-    border-radius: 15px;
-    color:black;
-   
-    
-}
-#accedi{
-    height: 30%;
-    width: fit-content;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-  
-    border-radius: 15px;
-    
-    color: white;
-    text-decoration: none;
-}
-
-h2{
+    font-size: 3vh;
+    background-color:#2563EB ; 
     color:white;
-    
+    border-radius: 15px;
+    border: none;
+    width: 100%;
+    height: 100%;
 }
-@media screen and (max-width: 390px)
-{   
-    form{
-        margin-top:25%;
-        height: 120vh;
+
+@media screen and (max-width:767px)
+{
+    body{
+        background-color: #ffffff;
+        overflow-Y: hidden;
+        position: fixed;
     }
-    #container
-    {
-        width:70%;
-        height:100%;
-    }
-    #container-body
-    {
-        display: flex;
-        justify-content: flex-start;
-        box-sizing: border-box;
-    }
-    h2
-    {
-        font-size: 200%;
-    }
-    .inputt
-    {
-        height:17%;
-        width:70%;
-        border-radius: 15px;
-        border:none;
-        margin-bottom: 10%;
-        padding-left: 2%;
-        font-size:110%;
-    }
-    #pass_btn
-    {
-        height: 17%;
-        margin-bottom:2%;
-    }
-    #hideShow
-    {
-        width:18%;
-    }
-    #passw
-    {
-        font-size:110%;
-        width:55%;
-    }  
-    #submitt
-    {
+    #container{
+        margin-top:0;
+        height:100vh;
         width: 100%;
-        display: flex;
-        justify-content: space-around;
-    }  
-    #accedi
-    {
-        font-size:120%;
+        padding-left: 2vh;
+        
+        
+        
+    }
+    h1{
+        font-size:6vh;
+        padding-left: 3vh;
+        padding-left: 3vh;
+    }
+    .input{
+        width:70vw;
+    }
+    #submitt{
+    width: 100%;;
+    height: 8vh;
+    display: flex;
+    justify-content: center;justify-content: center;
+
+    }
+    
+    #sbmt{
+        font-size: 4vh;
+        width:25vh;
     }
 }
 </style>
@@ -195,24 +131,24 @@ h2{
 
 <form action="registrazioni.php" method="POST">
     <fieldset id="container">
-        <legend><h1>Registrati</h1></legend>
+        <h1>Sign Up</h1>
         <div id="container-body">
-            <h2>Inserisci nome</h2>
-            <input type="text"  class="inputt" id="nome" name="nome" value="" placeholder=" Inserisci nome" size="15">
-            <h2>Inserisci cognome</h2>
-            <input type="text"  class="inputt" id="cognome" name="cognome" value="" placeholder=" Inserisci cognome" size="15">
-            <h2>Inserisci E-mail</h2>
-            <input type="text"  class="inputt" id="email" name="email" value="" placeholder=" Inserire e-mail" size="15">
-            <h2>Inserisci Password</h2>
+            
+            <input type="text"  class="input" id="nome" name="nome" value="" placeholder=" Inserisci nome" size="15">
+            
+            <input type="text"  class="input" id="cognome" name="cognome" value="" placeholder=" Inserisci cognome" size="15">
+           
+            <input type="text"  class="input" id="email" name="email" value="" placeholder=" Inserire e-mail" size="15">
+            
             <div id="pass_btn">
-                <input type="password" class="inputt" id="passw" name="passw" value="" placeholder=" Inserire password" size="15">
+                <input type="password" class="input" id="passw" name="passw" value="" placeholder=" Inserire password" size="15">
                 <img src="open_eye.png" id="hideShow">
                    
             </div>
         </div>
         <div id="submitt">
             <input type="submit" id="sbmt" name="sbmt" value="Registrati">
-            <a id="accedi" href="index.html">Accedi</a>
+            
 
         </div>
 
@@ -234,7 +170,7 @@ h2{
         if(input.type=="password")
             {
                 input.type="text";
-                text.src= "occhio_chiuso.png";
+                text.src= "closed_eye.png";
 
             }   
 

@@ -1,0 +1,4 @@
+cose da fare:
+1. password lunga almeno 8 caratteri
+2. controllo email gia esistente durante la registrazione
+3.

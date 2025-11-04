@@ -4,116 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8088869830901654"
+     crossorigin="anonymous"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=DM+Serif+Text:ital@0;1&display=swap');
 body{
-    background-color: rgba(73, 72, 172, 0.329);
-    height: 100vh;
-    display: flex;
+    background-color: #e0e0e0;
+    height:100vh;
+    display:flex;
     justify-content: center;
-    align-items: center;
-    font-family: "DM Serif Text",sans-serif;
-}
+    font-family: 'Inter', sans-serif;
+    overflow-y: hidden;
 
+}
 #container{
-    background-color: rgb(14, 12, 12);
-    width:30%;
-    height: 55%;
+    background-color: #ffffff;
+    margin-top:10vh;
+    padding-top:8vh;
+    width:60vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top:3%;
-    border-radius: 15px;
-    box-shadow: 5px 5px 5px;
-    
-    
-}
-#dest{
-    height:12%;
-    width: 50%;
-    font-size:130%;
-    padding-left:4%;
-    padding-right:4%;
-    font-family: "DM Serif Text",sans-serif;
-    
-   
-}
-
-#btn{
-    margin-top:10%;
-    height:15%;
-    padding-left:4%;
-    padding-right:4%;
-    font-size:220%;
-    font-family: "BBH Sans Hegarty",sans-serif;
-    background-color: white;
-    border-radius: 15px;
+    padding-left:5vh;
+    padding-right:5vh;
+    border: none;
 }
 h1{
-    color: white;
-    font-size:400%;
+    color:#2563EB;
+    font-size: 4vh;
 }
 
-
-@media screen and (max-width: 390px)
+.input{
+    margin-top:10vh;
+    width: 40vh;
+    height: 5vh;
+    font-size: 2vh;
+    padding-left:1vh;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom:1px solid black;
+    margin-bottom: 4vh;
+    padding-top:1vh;
+}
+#btn{
+    margin-top: 10vh;
+    font-size: 3vh;
+    background-color:#2563EB ; 
+    color:white;
+    border-radius: 15px;
+    border: none;
+    width: 20vh;
+    height: 8vh;
+}
+@media screen and (max-width:767px)
 {
     body{
-    
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    
-    
+        background-color: #ffffff;
+        padding:0;
+        margin: 0;
+        position: fixed;
+        
     }
-
-#container{
-    padding-top:15%;
-    width:80%;
-    height: 55%;
+    #container{
+        margin-top:0;
+        height:100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding:none;
+        
+        
+        
+        
+        
+    }
+    h1{
+    font-size:6vh;
+    padding-left: 3vh;
+    padding-left: 3vh;
+    }
+    .input{
+        width:100%;
+    }
+    #submitt{
+    width: 100%;;
+    height: 8vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;justify-content: center;
 
+    }
     
-   
-   
-    
-    
+    #sbmt{
+        font-size: 4vh;
+        width:25%;
+    }
 }
-#dest{
-    height:12%;
-    width: 50%;
-    font-size:130%;
-    padding-left:4%;
-    padding-right:4%;
-    
-    
-   
-}
-
-#btn{
-    margin-top:10%;
-    height:15%;
-    padding-left:4%;
-    padding-right:4%;
-    font-size:220%;
-    font-family: "BBH Sans Hegarty",sans-serif;
-    background-color: white;
-    border-radius: 15px;
-}
-h1{
-    color: white;
-    font-size:200%;
-}
-}
-
 </style>
+</head>
 <body>
 
     <div id="container">
             <h1>Destinatario</h1>
-            <input type="text" name="dest" id="dest" placeholder="Inserisci E-mail" size=10>
+            <input type="text" class="input" name="dest" id="dest" placeholder="Inserisci E-mail" size=10>
  
         <input type="button" name="btn" id="btn" value="Chatta" onClick="destinatario();">
         

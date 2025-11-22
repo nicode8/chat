@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require 'localConfig.php';
+require 'config.php';
 $conn= new mysqli($DB_local_host,$DB_local_user,$DB_local_pass,$DB_local_name);
 if($conn->connect_error)
     echo json_encode("errore");

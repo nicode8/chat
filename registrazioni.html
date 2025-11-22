@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazioni</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8088869830901654"
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8088869830901654"
      crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZVJ7VC46R"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VZVJ7VC46R');
+    
+</script>
 <style>
 body{
     background-color: #e0e0e0;
@@ -64,14 +74,17 @@ h1{
     justify-content: center;
     position:relative;
     display: inline-block;
+    padding-bottom:0vh;
+    margin-bottom: -4vh;
 }
 #hideShow{
     width:5vh;
     position: absolute;
 }
+
 #submitt{
 
-    margin-top:6vh;
+    margin-top:12vh;
     width:20vh;
     height: 6vh;
 
@@ -86,6 +99,81 @@ h1{
     border: none;
     width: 100%;
     height: 100%;
+}
+
+.red_response{
+    
+    color:red;
+    margin-top:-1vh;
+    font-size: 2vh;
+    text-align: center;
+    height:1vh;
+    width:100%;
+    font-size:1.5vh;
+    margin-bottom:1vh;
+}
+
+#container_messaggio_esito{
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display:none;
+
+}
+
+
+#messaggio_esito{
+    width:50vh;
+    height: 30vh;
+    background-color: white;
+    z-index:1;
+    border:2px solid black;
+    padding-left:2vh;
+    padding-right:2vh;
+    padding-bottom:2vh;
+    padding-top:2vh;
+    border-radius:15px;
+    padding-bottom:5vh;
+
+}
+#messaggio_esito #text{
+    width:100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+#messaggio{
+
+    font-size:3vh;
+}
+#close{
+    width:100%;
+    height:10vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+
+}
+#login{
+    height:6vh;
+    width:15vh;
+    background-color: #2563EB;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    color: white;
+    font-size: 3vh;
+
+    
 }
 
 @media screen and (max-width:767px)
@@ -133,35 +221,64 @@ h1{
     <fieldset id="container">
         <h1>Sign Up</h1>
         <div id="container-body">
-            
+            <div>
             <input type="text"  class="input" id="nome" name="nome" value="" placeholder=" Inserisci nome" size="15">
-            
-            <input type="text"  class="input" id="cognome" name="cognome" value="" placeholder=" Inserisci cognome" size="15">
-           
+            </div>
+
+            <div>
+            <input type="text"  class="input" id="username" name="username" value="" placeholder=" Inserisci username" size="15">
+            </div>
+
+            <div>
             <input type="text"  class="input" id="email" name="email" value="" placeholder=" Inserire e-mail" size="15">
-            
+            </div>
+
             <div id="pass_btn">
                 <input type="password" class="input" id="passw" name="passw" value="" placeholder=" Inserire password" size="15">
-                <img src="open_eye.png" id="hideShow">
-                   
+                <img src="open_eye.png" id="hideShow"> 
             </div>
+    
+            
         </div>
         <div id="submitt">
-            <input type="submit" id="sbmt" name="sbmt" value="Registrati">
-            
+            <input type="button" id="sbmt" name="sbmt" value="Registrati" onClick="sign_up();">
 
         </div>
-
     </fieldset>
 </form>
 
+<div id="container_messaggio_esito">
+<div id="messaggio_esito">
+
+    <div id="text">
+        <h2><p id="messaggio"> </p></h2>
+    </div>
+    <div id="close">
+        <button id="login" onClick="login();">Login</button>
+        
+    </div>
+
+
+</div>
+</div>
 
 
 
 <script type="text/javascript">
 
     hideShow.addEventListener("click",mostrapass)
+    var testo_password=document.getElementById("passw");
+    var email=document.getElementById("email");
+    var username=document.getElementById("username");
+    var nome=document.getElementById("nome");
+    testo_password.addEventListener('focus',function(){clean_message("redMessage_password");});
+    email.addEventListener('focus',function(){clean_message("redMessage_email");});
+    username.addEventListener('focus',function(){clean_message("redMessage_username");});
+    nome.addEventListener('focus',function(){clean_message("redMessage_nome");});
+    var message_esito=document.getElementById("container_messaggio_esito");
+    
 
+    var a=0;
     function mostrapass()
     {   
         
@@ -184,9 +301,112 @@ h1{
     }
 
 
+    function sign_up(){
+        var dati={
+        nome:document.getElementById("nome").value,
+        username:document.getElementById("username").value,
+        email:document.getElementById("email").value,
+        passw:document.getElementById("passw").value,
+        }
+       
+        var regex_email= /^[a-z][a-z0-9\.]+@[^\s@]+\.[a-z]+$/;
+        var regex_password= /^(?=.*[A-Za-z0-9])+(?=.*[!\.()\\/])+[A-Za-z0-9!\.()\\/]+$/;
+        var regex_username= /^[A-Za-z][A-Za-z0-9]+$/;
+        var regex_nome= /^[A-Za-z]+$/;
+        var messaggio=document.getElementById("messaggio");
+        var message_esito=document.getElementById("container_messaggio_esito");
 
+        if((!regex_nome.test(nome.value))||(nome.value.length<3))
+        {
+            controllo_red_message(nome,"red_response","redMessage_nome","Inserire nome","Inserire nome valido");
+            nome.value="";
+        
+        }
 
+        if((!regex_username.test(username.value)))
+        {   controllo_red_message(username,"red_response","redMessage_username","Inserire username","Inserire username valida");    
+            username.value="";
+        
+        }
 
+        if(!regex_email.test(email.value))
+        {
+            controllo_red_message(email,"red_response","redMessage_email","Inserire email","Inserire email valida");
+            email.value="";
+    
+        }
+
+        if((testo_password.value.length<8)||(!regex_password.test(testo_password.value)))
+        {
+            controllo_red_message(passw,"red_response","redMessage_password","Inserire password","La password deve:\n\n- avere almeno 8 caratteri\n- contenere almeno un carattere tra: ! . ( ) \ / ");
+            testo_password.value="";
+        }
+        
+
+        /*if(!a==0)
+        {
+            messaggio.textContent="compilare tutti i campi";
+            message_esito.style.display="flex";
+        }*/
+        if(a==0)
+        {   var messaggio=document.getElementById("messaggio"),result,response;
+            fetch("https://chattin.io/registrazioni.php",
+            {
+                method:"POST",
+                headers:{"Content-type":"application/json"},
+                body: JSON.stringify(dati)
+            })
+            .then(response=> response.json())
+            .then(result=> {
+                message_esito.style.display="flex";
+                
+                    messaggio.textContent= result.message;
+                    nome.value="";
+                    username.value="";
+                    email.value="";
+                    testo_password.value="";
+                    
+
+                
+        })
+        .catch(error=>console.log(error));
+        }
+    a=0;
+    }
+    
+
+    
+    function controllo_red_message(input,class_name,id_name,text_null,text){
+        var id=document.getElementById(id_name);
+        
+        if((!input.value)&&(!id))
+            fun_red_message(input,class_name,id_name,text_null);
+        
+        else if(input.value)
+                fun_red_message(input,class_name,id_name,text);
+        a++;
+    }
+
+    function fun_red_message(input,class_name,id_name,text){
+        
+        var item=document.createElement("div");
+        item.classList.add(class_name);
+        item.id=id_name;
+        item.textContent=text;
+        item.style.whiteSpace = "pre";
+        input.parentNode.appendChild(item);
+    }
+
+    function clean_message(casella){
+        var casella=document.getElementById(casella);
+            if(casella)
+                casella.remove();
+        }
+
+    function login(){
+        message_esito.style.display="none";
+        window.location.href="index.html";
+    }
 </script>
 </body>
 </html>

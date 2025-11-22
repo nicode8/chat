@@ -24,7 +24,11 @@ if($row= $result->fetch_assoc())
     header("Location: destinatario.html");
 }
 else
-    echo"errore";
+{
+    header("location:index.html");
+    echo"<script type='text/javascript> alert('questo account non esiste');</script>";
+
+}
 
 
 $stmt->close();

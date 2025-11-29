@@ -4,13 +4,12 @@ require 'config.php';
 $conn= new mysqli($DB_host,$DB_user,$DB_pass,$DB_name);
 
 if($conn->connect_error)
-    die("error");
+    echo json_decode("error");
 
 $email=$_POST["email"];
-$password=$_POST["passw"];
-if(empty($email) || empty($password)){
-    die("Compila tutti i campi");
-}
+$password=$_POST["password"];
+
+
 $sql="SELECT * FROM accessi WHERE email=? AND passw=? ";
 
 $stmt= $conn->prepare($sql);

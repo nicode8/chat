@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 require 'config.php';
-$conn= new mysqli($DB_local_host,$DB_local_user,$DB_local_pass,$DB_local_name);
+$conn= new mysqli($DB_host,$DB_user,$DB_pass,$DB_name);
 if($conn->connect_error)
     echo json_encode("errore");
 $json=file_get_contents("php://input");

@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazioni</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8088869830901654"
-     crossorigin="anonymous"></script>
+   
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZVJ7VC46R"></script>
@@ -338,7 +337,7 @@ h1{
 
         if((testo_password.value.length<8)||(!regex_password.test(testo_password.value)))
         {
-            controllo_red_message(passw,"red_response","redMessage_password","Inserire password","La password deve:\n\n- avere almeno 8 caratteri\n- contenere almeno un carattere tra: ! . ( ) \ / ");
+            controllo_red_message(testo_password,"red_response","redMessage_password","Inserire password","La password deve:\n\n- avere almeno 8 caratteri\n- contenere almeno un carattere tra: ! . ( ) \ / ");
             testo_password.value="";
         }
         
@@ -405,7 +404,7 @@ h1{
 
     function login(){
         message_esito.style.display="none";
-        window.location.href="index.html";
+        window.location.href="login.html";
     }
 </script>
 </body>

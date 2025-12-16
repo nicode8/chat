@@ -107,6 +107,7 @@ a{
     color:white;
     border-radius: 15px;
     border: none;
+    
 
 }
 
@@ -209,7 +210,7 @@ h1{
 
             <div id="pass_btn">
                 <div id="password_container">
-                    <input type="password" class="input" id="passw" name="passw" value="" placeholder=" Inserire password" size="15">
+                    <input type="password" class="input" id="passw" name="passw" value="" placeholder=" Inserire password" size="15" autocomplete="on">
                     <img src="open_eye.png" id="hideShow">
                 </div>
             </div>
@@ -276,31 +277,32 @@ h1{
 
     }
 
-    var sendObject={
-        email:email.value,
-        password:password.value
-    }
+    
     function Login()
-    {
+    {   
+        var sendObject={
+        email:email.value,
+        password:password.value,
+        }
+        
         if(!email.value)
             check("id_email_redMessage","Inserire email",email_container);
         if(!password.value)
             check("id_password_redMessage","Inserire password",password_container);
         
-        /*if(!a)
+        if(!a)
         {
-        fetch("accesso.php",{
-            headers:{"Content-type":"applicaztion/json"},
-            method:post,
-            body: json.strinfy(sendObject)
+        fetch("https://chattin.io/accesso.php",{
+            method: "POST",
+            headers:{"Content-type":"application/json"},
+            body: JSON.stringify(sendObject)
         })
-        .then(function (result){result.json})
-        .then(function(msg){
-        }
+        .then(param=>param.json())
+        .then(window.location.href="destinatario.html")
+        .catch(error=> console.log(error))
+        };
 
-        });*/
-
-
+        a=0;
     }
 
    
@@ -312,15 +314,20 @@ h1{
         div.id=id_name;
         div.textContent=text;
         parent.appendChild(div);
-        a++;
+       
         }
+       a++;
+
     }
 
-email.addEventListener('focus',function(){clean(id_email_redMessage);});
-password.addEventListener('focus',function(){clean(id_password_redMessage);});
+email.addEventListener('focus',function(){clean("id_email_redMessage");});
+password.addEventListener('focus',function(){clean("id_password_redMessage");});
+
 
 function clean(input){
-    input.remove();
+    input=document.getElementById(input);
+    if(input)
+        input.remove();
 }
 
 

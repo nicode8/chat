@@ -190,7 +190,8 @@ body{
 
 
     send_img.addEventListener('click',invia);
-    var last_message=[];
+    var last_message=0;
+
     function invia()
     {   
         var testo=document.getElementById("miotesto");
@@ -208,22 +209,24 @@ body{
             {   div.textContent= testo.value;
                 document.getElementById("container-message").appendChild(div);
                  message.scrollTop = message.scrollHeight;
-            }
+            
 
 
             fetch("https://chattin.io/chat.php", {method:"post", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: "messaggio=" + testo.value  });
-            setTimeout(() => {
-           
-            }, 0);
+            
             testo.value= "";
             testo.focus();
+        }
 
     }
 
    
+
+
     function ricevi()
     {   var msg;
-        fetch("https://chattin.io/ricevi.php")
+        fetch("https://chattin.io/ricevi.php",
+        {method:"post", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(last_message)  })
             .then(response=>response.json())
             .then(data=>{
     
@@ -233,15 +236,19 @@ body{
                     rett_r.style.display = "block"; 
 
                 data.forEach(msg=>{
-                if(!last_message.includes(msg))
+                if(last_message<(msg.id))
                 {
+
+
                 var div=document.createElement("div");
                     
                 div.classList.add("receive_message");
-                div.textContent= msg;
+                div.textContent= msg.messaggio;
                 document.getElementById("container-message").appendChild(div);
                 message.scrollTop = message.scrollHeight;
-                last_message.push(msg);
+                last_message= msg.id;
+
+
                 }
                 
                 })

@@ -10,23 +10,27 @@ if($conn->connect_error)
 $json=file_get_contents("php://input");
 $json=json_decode($json,true);
 
-$id=$json;
+$id=$json["last_id"];
 
 
 
-$sql="SELECT id,messaggio from messaggi_inviati where ricevente=? AND mittente=? AND id>?";
+$sql="SELECT id,messaggio,mittente FROM messaggi_inviati 
+        WHERE ((ricevente=? AND mittente=?) OR (ricevente=? AND mittente=?)) 
+        AND id > ? ORDER BY id ASC";
 
 $stmt= $conn->prepare($sql);
-$stmt->bind_param("ssi",$_SESSION["email"],$_SESSION["destinatario"],$id);
+$stmt->bind_param("ssssi",$_SESSION["email"],$_SESSION["destinatario"],$_SESSION["destinatario"],$_SESSION["email"],$id);
 $stmt->execute();
 $result=$stmt->get_result();
 
-$messaggio=[];
+$results=[];
 while($row=$result->fetch_assoc())
 {
     $results[]=[
         "id"=>$row["id"],
-        "messaggio"=>$row["messaggio"]
+        "messaggio"=>$row["messaggio"],
+        "mittente"=>$row["mittente"],
+        "miaEmail"=>$_SESSION["email"],
     ];
 
 }

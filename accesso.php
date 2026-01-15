@@ -24,7 +24,7 @@ $result= $stmt->get_result();
 
 if($result->fetch_assoc())
 {   $_SESSION["email"]=$email;
-    echo json_encode(["success"=>true,"message"=>"fatto"]);
+    //echo json_encode(["success"=>true,"message"=>"fatto"]);
 
  
 }

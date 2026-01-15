@@ -7,7 +7,7 @@ if($conn->connect_error)
     die("error");
 
 $messaggio=$_POST["messaggio"];
-$ora = (new DateTime())->format("Y-m-d H:i:s");
+$ora = $ora = date("Y-m-d H:i:s");
 
 $sql="INSERT INTO messaggi_inviati (mittente,ricevente,messaggio,ora) VALUES (?,?,?,?)";
 
@@ -18,17 +18,6 @@ $invio->execute();
 
 $invio->close();
 $conn->close();
-
-
-
-
-
-
-
-
-
-
-
 
 
 ?>

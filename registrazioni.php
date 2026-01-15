@@ -11,14 +11,14 @@ $dati=json_decode($json,true);
 
 $nome=$dati["nome"];
 $username=$dati["username"];
-$_SESSION["email"]=$dati["email"];
+$email=$dati["email"];
 $password=$dati["passw"];
 
 
 
 $sql_check="SELECT * FROM accessi WHERE email=? OR username=?";
 $stmt2= $conn->prepare($sql_check);
-$stmt2->bind_param("ss",$_SESSION["email"],$username);
+$stmt2->bind_param("ss",$email,$username);
 $stmt2->execute();
 $stmt2_result= $stmt2->get_result();
 

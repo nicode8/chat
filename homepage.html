@@ -94,6 +94,7 @@ body{
 
 .send_message{
     margin-left:auto;
+    margin-right:0;
     width:20%;
     background-color: aliceblue;
     height: fit-content;
@@ -110,14 +111,14 @@ body{
 #container-message{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding-left:20%;
     padding-right:20%;
    
     
 }
 .receive_message{
-    
+    margin-right:auto; 
+     margin-left: 0;
     width:20%;
     background-color: aliceblue;
     height: fit-content;
@@ -195,38 +196,27 @@ body{
     function invia()
     {   
         var testo=document.getElementById("miotesto");
-        var rett=document.getElementById("d_none1");
-        var message=document.getElementById("container-message");
-        if(rett.style.display=="none")
-            rett.style.display = "block";
-
-        var div=document.createElement("div");
-    
-        div.classList.add("send_message");
-        if(testo.value== "")
+        if(testo.value=="")
             alert("inserisci un messaggio per inviare");
         else
-            {   div.textContent= testo.value;
-                document.getElementById("container-message").appendChild(div);
-                 message.scrollTop = message.scrollHeight;
-            
-
-
+        {
             fetch("https://chattin.io/chat.php", {method:"post", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: "messaggio=" + testo.value  });
             
             testo.value= "";
             testo.focus();
         }
-
     }
+
+    
 
    
 
 
     function ricevi()
     {   var msg;
+    
         fetch("https://chattin.io/ricevi.php",
-        {method:"post", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(last_message)  })
+        {method:"post", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({last_id: last_message})})
             .then(response=>response.json())
             .then(data=>{
     
@@ -236,13 +226,16 @@ body{
                     rett_r.style.display = "block"; 
 
                 data.forEach(msg=>{
-                if(last_message<(msg.id))
+                if(parseInt(last_message)<parseInt(msg.id))
                 {
+                    console.log("MITTENTE:", msg.mittente,"DESTINATARIO:"+ msg.destinatario);
+                    var div=document.createElement("div");
 
+                if(msg.miaEmail==msg.mittente)
+                    div.classList.add("send_message");
+                else
+                    div.classList.add("receive_message");
 
-                var div=document.createElement("div");
-                    
-                div.classList.add("receive_message");
                 div.textContent= msg.messaggio;
                 document.getElementById("container-message").appendChild(div);
                 message.scrollTop = message.scrollHeight;

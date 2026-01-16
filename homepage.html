@@ -227,13 +227,13 @@ body{
 
                 data.forEach(msg=>{
                 if(parseInt(last_message)<parseInt(msg.id))
-                {
-                    console.log("MITTENTE:", msg.mittente,"DESTINATARIO:"+ msg.destinatario);
+                {     
+                    //console.log("MITTENTE:", msg.mittente,"DESTINATARIO:"+ msg.destinatario);
                     var div=document.createElement("div");
 
-                if(msg.miaEmail==msg.mittente)
+                if(msg.email==msg.mittente)
                     div.classList.add("send_message");
-                else
+                else 
                     div.classList.add("receive_message");
 
                 div.textContent= msg.messaggio;

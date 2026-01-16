@@ -30,7 +30,7 @@ while($row=$result->fetch_assoc())
         "id"=>$row["id"],
         "messaggio"=>$row["messaggio"],
         "mittente"=>$row["mittente"],
-        "miaEmail"=>$_SESSION["email"],
+        "email"=>$_SESSION["email"],
     ];
 
 }
